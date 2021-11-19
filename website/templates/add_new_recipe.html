@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %} Thêm công thức mới {% endblock %}
+
+{% block content %}
+    
+    <form method="POST" enctype="multipart/form-data">
+        <h3 align="center"> Thêm công thức mới </h3>
+        <div class="form-group">
+            <label for="name"> Tên món ăn </label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="name" 
+                name="name" 
+                placeholder="nhập tên món ăn"
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="text"> Loại món ăn </label>
+            <input 
+                type="number" 
+                class="form-control" 
+                id="id_categoryfood" 
+                name="id_categoryfood" 
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="text"> Nguyên Liệu </label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="material" 
+                name="material" 
+                placeholder="nhập các nguyên liệu"
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="text"> Công thức </label>
+            <textarea
+                class="form-control" 
+                id="recipe" 
+                name="recipe" 
+                rows="10"
+                placeholder="nhập công thức của bạn"
+            >
+            </textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="text"> Ảnh minh họa </label>
+            <input type="file" id="image" name="image" required>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary"> Thêm </button>
+    </form>
+
+    <br> <br> 
+{% endblock %}

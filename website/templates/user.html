@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+    <main class="page">
+        <section class="contact-container">
+             <article class="contact-info">
+               <h3>{{user.name}}</h3>
+               <p>ID: {{user.id}}</p>
+               <p>
+                    Email: {{user.email}}
+                    <!-- Password: {{user.password}} -->
+               </p>
+               <p>
+                   Thành phố: {{user.city}}
+               </p>
+             </article>
+
+             <article>
+                <!-- <p>Avata: {{user.avatar}} </p> -->
+                 <img src="/static/img/uploads/{{user.avatar}}">
+             </article>
+           </section>
+        
+       </main>
+
+{% endblock content %}

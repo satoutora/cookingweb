@@ -1,0 +1,30 @@
+<!-- nav  -->
+<nav class="navbar">
+    <div class="nav-center">
+      <div class="nav-header">
+        <a class="nav-logo">
+          <img src="/static/assets/logo.svg" alt="simply recipes" />
+        </a>
+        <button class="nav-btn btn">
+          <i class="fas fa-align-justify"></i>
+        </button>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="nav-link"> Trang chủ </a>
+        {% if user.is_authenticated %}
+        <a href="/userRecipe" class="nav-link"> Công thức của tôi </a>
+        {% endif %}
+        
+        <div class="nav-link contact-link">
+            {% if user.is_authenticated %}
+            <a class="btn" id="logout" href="/logout"> Logout </a>
+            <a href="/userPage" class="btn"> {{ user.name }}</a>
+            {% else %}
+            <a class="btn" id="login" href="/login"> Login </a>
+            <a class="btn" id="signup" href="/sign-up"> Sign up </a>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- end of nav -->

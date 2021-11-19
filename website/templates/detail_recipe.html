@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="page">
+    <div class="recipe-page">
+      <section class="recipe-hero">
+        <img
+          src="/static/img/uploads/{{food.image}}"
+          class="img recipe-hero-img"
+        />
+        <article class="recipe-info">
+          <h2>{{food.name}}</h2>
+          <p>
+            
+          </p>
+          <div class="recipe-icons">
+            <article>
+              <i class="fas fa-clock"></i>
+              <h5>prep time</h5>
+              <p>30 min.</p>
+            </article>
+            <article>
+              <i class="far fa-clock"></i>
+              <h5>cook time</h5>
+              <p>25 min.</p>
+            </article>
+          </div>
+          {% for cat in list_category %}
+            {% if cat.id == food.id_categoryfood %}
+                <p class="recipe-tags">
+                    Tags : <a href="tag-template.html">{{cat.name}}</a>
+                </p>
+            {% endif %}
+          {% endfor %}
+          {% for user in list_user %}
+            {% if user.id == food.id_user %}
+                <p class="recipe-tags">
+                    Đăng bởi: <a href="/view_user/{{user.id}}">{{user.name}}</a>
+                </p>
+            {% endif %}
+          {% endfor %}
+        </article>
+      </section>
+      <!-- content -->
+      <section class="recipe-content">
+        <article>
+          <h4>Cách làm</h4>
+          <!-- single instruction -->
+          <div class="single-instruction">
+            <p>
+              {{food.recipe}}
+            </p>
+          </div>
+        </article>
+        <article class="second-column">
+          <div>
+            <h4>Nguyên liệu</h4>
+            <p class="single-ingredient"> {{food.material}}</p>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <br>
+    <div>
+        <h3 align="left"> Bình luận </h3>
+        {% for cmt in list_comments %}
+            {% if cmt.id_categoryfood == food.id %}
+                {% for u in list_user %} 
+                    {% if u.id == cmt.id_user %} 
+                    <p class="recipe-tags">
+                      <img class="avatar_cmt" src="/static/img/uploads/{{u.avatar}}">
+                        <a>{{u.name}}</a> : {{cmt.content}}
+                    </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label class="btn" for="comment"> {{user.name}} </label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="comment" 
+                    name="comment" 
+                    placeholder="Nhập bình luận của bạn"
+                />
+            </div>
+            <button type="submit" class="btn btn-primary"> Submit </button>
+        </form>
+        <br> <br>
+    </div>
+  </main>
+
+{% endblock content %}

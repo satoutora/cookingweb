@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- main -->
+    <main class="page">
+        <div class="featured-recipes">
+          <h4>Công thức của tôi</h4>
+          <a class="btn" href="/add-new-recipe"> Thêm công thức mới </a>
+          <br> <br>
+            <!-- recipes list -->
+            
+          <div class="recipes-list">
+            {% for recipe in list_food %}
+                {% if recipe.id_user == current_user.id %}
+                <a href="detail_recipe/{{recipe.id}}" class="recipe">
+                    <img
+                      src="/static/img/uploads/{{recipe.image}}"
+                      class="img recipe-img"
+                      alt=""
+                    />
+                    <h5> {{recipe.name}}  </h5>
+                </a>
+                <a class="btn" href="deleteRecipe/{{recipe.id}}"> Xóa </a> 
+                  
+                {% endif %}
+            {% endfor %}
+          </div>
+          <!-- end of recipe list -->
+        </div>
+            
+      </main>
+{% endblock content %}
